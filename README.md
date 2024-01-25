@@ -32,6 +32,8 @@
 
 ## Here are my findings:
 
+### Feature Counts
+
 - Sex and region had mostly balanced proportions.
 
 - Record counts of the number of children steadily decreased when going from 0 children to 5. There was an especially large drop from 3 children to 4 (11.7% to 1.9%). Those with 5 children only make up 1.3% of the dataset.
@@ -41,6 +43,8 @@
 - Most of the customers weren't smokers with there being an 80/20 percent split.
 
 - There are a lot of varying BMIs covered in the dataset with most of them being between 22 and 40. There are quite a few outliers, some people being as low as 16 while on the other end, there are even more with around 26 people being between 44 and 53. This is an interesting find as this shows a small trend of there being a lot more individuals being outliers on the higher end than the lower end (likely due to the obesity issues in America).
+
+### Feature to Target Correlations
 
 - When comparing age to the target variable, I'm not certain but there appear to be 3 mostly linear lines that show an increase of charges with advancing age. This could represent a possible positive correlation between age and charges and an additional factor at play that separates the insured customers into 3 groups.
 
@@ -61,6 +65,8 @@
 - When looking at the average charges for different BMIs, there appears to be a general trend of higher costs for higher BMIs with a strange outlier at the BMIs 49 and 50, where the costs dipped down 7k and then 9k all the way down to 2.4k average costs at BMI 50. This seems rather strange but I have an idea as to what could have caused this. I believe that these BMIs at the higher end are rather rare, meaning they can heavily sway the average charges of the charts and that their charges can largely vary. It's possible these outliers are some sort of bodybuilders, who tend to have large BMIs but are quite physically healthy, likely resulting in lower insurance charges. This is just speculation but I find it difficult to make sense of these outliers otherwise.
 
 - I looked for outliers in the number of children. There were a few but not enough to have affected the trend of the average charges chart to a large extent. It seems the charges of those with 0-3 children are rather similar with those at 4 and 5 children are quite low.
+
+### Feature to Feature Correlations
 
 - When looking at age vs average children count, as one would expect, an upside-down parabola pattern appears. At 20, the average children count is 0.5, which steadily rises until age 40 where the average children count is ~1.5, which then steadily decreases as age reaches the 60s where the average children count is back down to 0.5.
 
