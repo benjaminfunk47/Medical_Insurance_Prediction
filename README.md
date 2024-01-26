@@ -140,7 +140,9 @@ I evaluated the model using PyCaret's visualizations:
 As you can see, it appears the model is fitting very well to the data, but there appears to be some entries that are outside of the general pattern of the dataset. Also, it appears that the only features that held importance in determining insurance charges was whether someone was a smoker or not, their age, and their BMI. Smoker_encoded was specifically important as it had a feature important of 0.7 while bmi and age were only around 0.17 and 0.12. The other features held little to no importance in determining the target. I then made the model make predictions on the holdout set to see whether it generalized enough and didn't overfit. The model achieved an RMSE of ~4800 on the holdout set and therefore generalizes quite well. Satisfied, I finalized the model by training it on the entire dataset and saved it. You can download and view those files yourself. Feel free to repeat my experiment or see how the model generalizes to unseen data of other datasets.
 
 # Conclusion
-In conclusion, I was able to create a Gradient Boosting Regressor model that could predict medical insurance charges based on age, bmi, and whether you were a smoker or not. The model achieved 4800 RMSE on the holdout set and had a R-Squared score of around 0.81. In order to achieve this, I performed:
+In conclusion, I was able to create a Gradient Boosting Regressor model that could predict medical insurance charges based on age, bmi, and whether you were a smoker or not. The model achieved 4800 RMSE on the holdout set and had a R-Squared score of around 0.81. 
+
+In order to achieve this, I performed:
 - Data storing
 - Data visualization
 - Data preparation/cleaning (removal of outliers, standardization, feature encoding)
@@ -148,6 +150,7 @@ In conclusion, I was able to create a Gradient Boosting Regressor model that cou
 - Model tuning
 - Model evaluation/visualization
 - Model finalization
+
 The technologies and libraries used were:
 - BigQuery
 - Looker Studio
