@@ -125,7 +125,35 @@ Now, it's time to put the data into Jupyter Notebook for cleaning before it is u
 - Make transformations on categorical features to create encoded versions
 - Save CSVs of cleaned dataframes
 Here are the histograms before and after the removal of outliers:
-![Code image](images/bmi_before.JPG)
-![Code image](images/bmi_after.JPG)
-![Code image](images/charges_before.JPG)
-![Code image](images/charges_after.JPG)
+
+![Code image](images/bmi_before.png)
+![Code image](images/bmi_after.png)
+![Code image](images/charges_before.png)
+![Code image](images/charges_after.png)
+
+# Model Creation
+Finally, it's time to begin model creation. I used PyCaret's RegressionExperiment object for this. I separated the dataset's column into those to be ignored, those that are numerical, and those that are categorical. The original categorical columns (the non-encoded ones) were ignored, age and bmi were set to numerical, and the encoded features along with the children column were set to categorical variables. I scaled the numerical features with Sklearn's StandardScaler and save the scaler as a pkl file. I created a RegressionExperiment object and set it up to have an 80/20 train/test split, allowed fold shuffling, and set a fold size of 5. When comparing models, Gradient Boosting Regressor appeared to fit to the data the best with an R-Squared score of 0.85 and had the best RMSE score. Hence, I chose this model type for my dataset. I attempted to tune the model on the RMSE metric but the tuning didn't result in any improvements. 
+I evaluated the model using PyCaret's visualizations:
+![Code image](images/prediction_error.png)
+![Code image](images/feature_selection.png)
+![Code image](images/feature_importance.png)
+As you can see, it appears the model is fitting very well to the data, but there appears to be some entries that are outside of the general pattern of the dataset. Also, it appears that the only features that held importance in determining insurance charges was whether someone was a smoker or not, their age, and their BMI. Smoker_encoded was specifically important as it had a feature important of 0.7 while bmi and age were only around 0.17 and 0.12. The other features held little to no importance in determining the target. I then made the model make predictions on the holdout set to see whether it generalized enough and didn't overfit. The model achieved an RMSE of ~4800 on the holdout set and therefore generalizes quite well. Satisfied, I finalized the model by training it on the entire dataset and saved it. You can download and view those files yourself. Feel free to repeat my experiment or see how the model generalizes to unseen data of other datasets.
+
+# Conclusion
+In conclusion, I was able to create a Gradient Boosting Regressor model that could predict medical insurance charges based on age, bmi, and whether you were a smoker or not. The model achieved 4800 RMSE on the holdout set and had a R-Squared score of around 0.81. In order to achieve this, I performed:
+- Data storing
+- Data visualization
+- Data preparation/cleaning (removal of outliers, standardization, feature encoding)
+- Model creation
+- Model tuning
+- Model evaluation/visualization
+- Model finalization
+The technologies and libraries used were:
+- BigQuery
+- Looker Studio
+- Python 3.11.7
+- Pandas 2.2.0
+- Numpy 1.26.3
+- Matplotlib
+- Scikit-learn 1.4.0
+- PyCaret 3.2.0
