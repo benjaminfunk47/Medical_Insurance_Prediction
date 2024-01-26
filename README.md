@@ -114,3 +114,18 @@
 
 ![Visualization image](images/male_pct_region.JPG)
 - When looking at the percentage of males in each of the regions, we see that they are mostly the same at around ~50%, with the southeast being the only one slightly different at 52%.
+
+# Data Preparation
+Now, it's time to put the data into Jupyter Notebook for cleaning before it is used in training a model. Here was my process:
+- Check dtypes of features to see which needed to be encoded
+- Check for null values (none present)
+- Look at histograms of continous features to look for any obvious outliers (noticed a few in the bmi and charges variables)
+- Use z-scores to identify outliers (those with a z-score greater than 3) and drop outliers from dataset
+- Look at histograms again to see the improvement
+- Make transformations on categorical features to create encoded versions
+- Save CSVs of cleaned dataframes
+Here are the histograms before and after the removal of outliers:
+![Code image](images/bmi_before.JPG)
+![Code image](images/bmi_after.JPG)
+![Code image](images/charges_before.JPG)
+![Code image](images/charges_after.JPG)
