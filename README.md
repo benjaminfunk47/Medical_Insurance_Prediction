@@ -1,3 +1,33 @@
+# Introduction
+In order to sharpen my skills, I wanted to do a personal project that included the following things:
+- Database usage/data storage
+- SQL Querying
+- Data visualizations
+- Feature engineering
+- Data analysis
+- Model creation and evaluation
+- Model tuning/optimization
+- Metrics evaluation and visualizations
+
+In this project, I performed:
+- Data storing
+- Data visualization
+- Data preparation/cleaning (removal of outliers, standardization, feature encoding)
+- Model creation
+- Model tuning
+- Model evaluation/visualization
+- Model finalization
+
+The technologies and libraries used were:
+- BigQuery
+- Looker Studio
+- Python 3.11.7
+- Pandas 2.2.0
+- Numpy 1.26.3
+- Matplotlib
+- Scikit-learn 1.4.0
+- PyCaret 3.2.0
+
 # Kaggle Dataset
 - The first step I took was to find a public dataset to work with. I found a [Kaggle Medical Insurance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download) which has 1338 entries, 6 features, and one target variable.
 
@@ -141,22 +171,3 @@ As you can see, it appears the model is fitting very well to the data, but there
 
 # Conclusion
 In conclusion, I was able to create a Gradient Boosting Regressor model that could predict medical insurance charges based on age, bmi, and whether you were a smoker or not. The model achieved 4800 RMSE on the holdout set and had a R-Squared score of around 0.81. 
-
-In order to achieve this, I performed:
-- Data storing
-- Data visualization
-- Data preparation/cleaning (removal of outliers, standardization, feature encoding)
-- Model creation
-- Model tuning
-- Model evaluation/visualization
-- Model finalization
-
-The technologies and libraries used were:
-- BigQuery
-- Looker Studio
-- Python 3.11.7
-- Pandas 2.2.0
-- Numpy 1.26.3
-- Matplotlib
-- Scikit-learn 1.4.0
-- PyCaret 3.2.0
