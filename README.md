@@ -3,22 +3,15 @@ In order to sharpen my skills, I wanted to do a personal project that included t
 - Database usage/data storage
 - SQL Querying
 - Data visualizations
+- Data preparation/cleaning (removal of outliers, standardization, feature encoding)
 - Feature engineering
 - Data analysis
-- Model creation and evaluation
+- Model creation, evaluation, and visualization
 - Model tuning/optimization
 - Metrics evaluation and visualizations
-
-In this project, I performed:
-- Data storing
-- Data visualization
-- Data preparation/cleaning (removal of outliers, standardization, feature encoding)
-- Model creation
-- Model tuning
-- Model evaluation/visualization
 - Model finalization
 
-The technologies and libraries used were:
+The technologies and libraries used for this project are:
 - BigQuery
 - Looker Studio
 - Python 3.11.7
