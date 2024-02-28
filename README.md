@@ -147,10 +147,15 @@ Now, it's time to put the data into Jupyter Notebook for cleaning before it is u
 - Look at histograms again to see the improvement
 - Make transformations on categorical features to create encoded versions
 - Save CSVs of cleaned dataframes
-Here are the histograms before and after the removal of outliers:
+Here are the histograms before and after the removal of outliers for BMI and charges:
+
+BMI:
 
 ![Code image](images/bmi_before.png)
 ![Code image](images/bmi_after.png)
+
+Charges:
+
 ![Code image](images/charges_before.png)
 ![Code image](images/charges_after.png)
 
