@@ -16,7 +16,7 @@ The technologies and libraries used for this project are:
 - Looker Studio
 - Python 3.11.7
 - Pandas 2.2.0
-- Numpy 1.26.3
+- NumPy 1.26.3
 - Matplotlib
 - Scikit-learn 1.4.0
 - PyCaret 3.2.0
