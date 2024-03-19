@@ -24,24 +24,24 @@ The technologies and libraries used for this project are:
 - PyCaret 3.2.0
 
 # Kaggle Dataset
-- The first step I took was to find a public dataset to work with. I found a [Kaggle Medical Insurance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download) which has 1338 entries, 6 features, and one target variable.
+The first step I took was to find a public dataset to work with. I found a [Kaggle Medical Insurance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download) which has 1338 entries, 6 features, and one target variable.
 
 ![Kaggle Preview](images/kaggle.JPG)
 ![Kaggle Preview](images/kaggle2.JPG)
 
-- These features are age (age of primary beneficiary), sex, region (in the U.S.), smoker, children (number of children covered by health insurance/number of dependents), and BMI.
+These features are age (age of primary beneficiary), sex, region (in the U.S.), smoker, children (number of children covered by health insurance/number of dependents), and BMI.
 
-- The target variable is charges (the individual medical costs billed by the health insurance company).
+The target variable is charges (the individual medical costs billed by the health insurance company).
 
 
 # BigQuery
-- I loaded this dataset into a data warehouse on the Google Cloud Platform and viewed it in BigQuery.
+I loaded this dataset into a data warehouse on the Google Cloud Platform and viewed it in BigQuery.
 
 ![BigQuery Preview](images/data_loaded.JPG)
 
 ![BigQuery Preview](images/preview.JPG)
 
-- I created 3 additional columns that served as encoded versions of the categorical columns of the dataset (sex and region - string columns, smoker - bool column). 
+I created 3 additional columns that served as encoded versions of the categorical columns of the dataset (sex and region - string columns, smoker - bool column). 
 
 - For these encoded features:
 
@@ -54,9 +54,9 @@ The technologies and libraries used for this project are:
 ![BigQuery Preview](images/preview_with_encoded.JPG)
 
 # Looker Studio Data Analysis & Visualization
-- I then made visualizations of these features using Looker Studio. I looked at the distributions of the columns, the correlations of the features to the target variable, and the correlations between features.
+I then made visualizations of these features using Looker Studio. I looked at the distributions of the columns, the correlations of the features to the target variable, and the correlations between features.
 
-- I also created a couple of fields to look deeper into some of the features and correlations. These fields are avg_charges, rounded_bmi, avg_bmi, smoker_pct, nonsmoker_pct, male_pct, and female_pct. There are percentage values that help me to look deeper into the distribution of males, females, and smokers in the different regions, ages, BMIs, and so on. This makes things clearer than using counts. There are also the rounded BMI (rounded down to 1s place) and average BMI and charges fields which help get a better look at the dataset and general trends as a whole.
+I also created a couple of fields to look deeper into some of the features and correlations. These fields are avg_charges, rounded_bmi, avg_bmi, smoker_pct, nonsmoker_pct, male_pct, and female_pct. There are percentage values that help me to look deeper into the distribution of males, females, and smokers in the different regions, ages, BMIs, and so on. This makes things clearer than using counts. There are also the rounded BMI (rounded down to 1s place) and average BMI and charges fields which help get a better look at the dataset and general trends as a whole.
 
 ## Here are my findings:
 
@@ -151,15 +151,15 @@ Now, it's time to put the data into Jupyter Notebook for cleaning before it is u
 - Save CSVs of cleaned dataframes
 Here are the histograms before and after the removal of outliers for BMI and charges:
 
-BMI:
+  - BMI:
 
-![Code image](images/bmi_before.png)
-![Code image](images/bmi_after.png)
+  ![Code image](images/bmi_before.png)
+  ![Code image](images/bmi_after.png)
 
-Charges:
+  - Charges:
 
-![Code image](images/charges_before.png)
-![Code image](images/charges_after.png)
+  ![Code image](images/charges_before.png)
+  ![Code image](images/charges_after.png)
 
 # Model Creation
 Finally, it's time to begin model creation. I used PyCaret's RegressionExperiment object for this. I separated the dataset's column into those to be ignored, those that are numerical, and those that are categorical. The original categorical columns (the non-encoded ones) were ignored, age and bmi were set to numerical, and the encoded features along with the children column were set to categorical variables. I scaled the numerical features with Sklearn's StandardScaler and save the scaler as a pkl file. I created a RegressionExperiment object and set it up to have an 80/20 train/test split, allowed fold shuffling, and set a fold size of 5. When comparing models, Gradient Boosting Regressor appeared to fit to the data the best with an R-Squared score of 0.85 and had the best RMSE score. Hence, I chose this model type for my dataset. I attempted to tune the model on the RMSE metric but the tuning didn't result in any improvements. 
@@ -169,7 +169,7 @@ I evaluated the model using PyCaret's visualizations:
 ![Code image](images/feature_selection.png)
 ![Code image](images/feature_importance.png)
 
-As you can see, it appears the model is fitting very well to the data, but there appears to be some entries that are outside of the general pattern of the dataset. Also, it appears that the only features that held importance in determining insurance charges was whether someone was a smoker or not, their age, and their BMI. Smoker_encoded was specifically important as it had a feature important of 0.7 while bmi and age were only around 0.17 and 0.12. The other features held little to no importance in determining the target. I then made the model make predictions on the holdout set to see whether it generalized enough and didn't overfit. The model achieved an RMSE of ~4800 on the holdout set and therefore generalizes quite well. Satisfied, I finalized the model by training it on the entire dataset and saved it. You can download and view those files yourself. Feel free to repeat my experiment or see how the model generalizes to unseen data of other datasets.
+As you can see, it appears the model is fitting very well to the data, but there appear to be some entries that are outside of the general pattern of the dataset. Also, it appears that the only features that held importance in determining insurance charges was whether someone was a smoker or not, their age, and their BMI. Smoker_encoded was specifically important as it had a feature important of 0.7 while bmi and age were only around 0.17 and 0.12. The other features held little to no importance in determining the target. I then made the model make predictions on the holdout set to see whether it generalized enough and didn't overfit. The model achieved an RMSE of ~4800 on the holdout set and therefore generalizes quite well. Satisfied, I finalized the model by training it on the entire dataset and saved it. You can download and view those files yourself. Feel free to repeat my experiment or see how the model generalizes to unseen data of other datasets.
 
 # Conclusion
 In conclusion, I was able to create a Gradient Boosting Regressor model that could predict medical insurance charges based on age, bmi, and whether you were a smoker or not. The model achieved 4800 RMSE on the holdout set and had a R-Squared score of around 0.81. 
