@@ -1,5 +1,6 @@
 # Introduction
 This is a personal project. The main goal of this project was to sharpen my skills with Looker Studio visualizations, Google BigQuery, and Machine Learning. In this project, I created visualizations of the dataset using Looker Studio to gather insights. I used Google BigQuery to store my dataset and make queries to gather further insights and create features to be used in my visualizations. Lastly, I used PyCaret to create an effective machine learning model to predict medical insurance charges given age, sex, U.S. region, children, BMI, and whether or not the person is a smoker.
+
 To refine my skills, I included the following things in the personal project:
 - Database usage/data storage
 - SQL Querying
